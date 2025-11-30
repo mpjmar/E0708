@@ -45,8 +45,16 @@ public class App {
         
         int temperaturas[] = new int[12];
         for (int i = 0; i < 12; i++) {
-            System.out.printf("Introduzca la temperatura media de %s: ", muestraMes(i));
-            temperaturas[i] = Integer.parseInt(System.console().readLine());
+            try {
+                System.out.printf("Introduzca la temperatura media de %s: ", muestraMes(i));
+                temperaturas[i] = Integer.parseInt(System.console().readLine());
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Los valores deben ser enteros.");
+            }
+            catch (Exception e) {
+                System.out.println("Ha ocurrido un error inesperado.");
+            }
         }
         System.out.println();
         return temperaturas;
